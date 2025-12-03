@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Pharma Data Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0d9488;
+            --primary-dark: #0f766e;
+            --secondary-color: #134e4a;
+            --accent-color: #14b8a6;
+            --text-color: #1e293b;
+            --text-light: #475569;
+            --background: #ffffff;
+            --background-alt: #f0fdfa;
+            --gradient-start: #0d9488;
+            --gradient-end: #134e4a;
+            --dark-bg: #0f172a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-cta {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 10rem 5% 5rem;
+            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Service Detail Section */
+        .service-detail {
+            padding: 5rem 5%;
+        }
+
+        .service-detail:nth-child(even) {
+            background: var(--background-alt);
+        }
+
+        .service-detail-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .service-detail:nth-child(even) .service-detail-content {
+            direction: rtl;
+        }
+
+        .service-detail:nth-child(even) .service-detail-content>* {
+            direction: ltr;
+        }
+
+        .service-detail-text h2 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .service-detail-text h2 i {
+            color: var(--primary-color);
+        }
+
+        .service-detail-text p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .service-detail-text ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-detail-text ul li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: var(--text-color);
+        }
+
+        .service-detail-text ul li i {
+            color: var(--primary-color);
+            margin-top: 0.25rem;
+        }
+
+        .service-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .service-icon-large {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 60px rgba(13, 148, 136, 0.3);
+        }
+
+        .service-icon-large i {
+            font-size: 8rem;
+            color: white;
+            opacity: 0.9;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, #0f172a 0%, #134e4a 100%);
+            color: white;
+        }
+
+        .benefits-section .section-header h2 {
+            color: white;
+        }
+
+        .benefits-section .section-header p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-card i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .benefit-card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 5%;
+            text-align: center;
+            background: var(--background-alt);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(13, 148, 136, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0f172a 0%, #134e4a 100%);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .service-detail-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .service-detail:nth-child(even) .service-detail-content {
+                direction: ltr;
+            }
+
+            .service-detail-text h2 {
+                justify-content: center;
+            }
+
+            .service-detail-text ul li {
+                justify-content: center;
+            }
+
+            .service-icon-large {
+                width: 200px;
+                height: 200px;
+            }
+
+            .service-icon-large i {
+                font-size: 5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html" class="logo">
+            <img src="P_logo_cor_vertical.png" alt="Pharma Data Hub" style="height: 45px;">
+        </a>
+        <ul class="nav-links">
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <a href="index.html#contact" class="nav-cta">Get Started</a>
+        <div class="mobile-menu">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Our Services</h1>
+        <p>Comprehensive pharmaceutical data solutions designed to enhance patient safety and streamline medication
+            management</p>
+    </section>
+
+    <!-- Service 1: ADR Registration -->
+    <section class="service-detail" id="adr-registration">
+        <div class="service-detail-content">
+            <div class="service-detail-text">
+                <h2><i class="fas fa-shield-alt"></i> Adverse Drug Reaction Registration</h2>
+                <p>Our Adverse Drug Reaction Registration service plays a crucial role in enhancing patient safety.
+                    Specifically designed to assist pharmacy, allergy, risk management, and quality teams in healthcare
+                    settings, this platform goes beyond simple ADR logging.</p>
+                <p>By integrating real-world data from healthcare institutions with scholarly articles, case studies,
+                    and research findings, our service offers a comprehensive view of drug reactions that enables better
+                    clinical decision-making.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Real-time ADR incident logging and tracking</li>
+                    <li><i class="fas fa-check"></i> Integration with existing hospital information systems</li>
+                    <li><i class="fas fa-check"></i> Automated severity classification and risk assessment</li>
+                    <li><i class="fas fa-check"></i> Customizable reporting for regulatory compliance</li>
+                    <li><i class="fas fa-check"></i> Multi-user collaboration with role-based access</li>
+                </ul>
+            </div>
+            <div class="service-visual">
+                <div class="service-icon-large">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service 2: Drug Information -->
+    <section class="service-detail" id="drug-information">
+        <div class="service-detail-content">
+            <div class="service-detail-text">
+                <h2><i class="fas fa-database"></i> Comprehensive Drug Information</h2>
+                <p>In the rapidly evolving pharmaceutical industry, access to accurate and up-to-date drug information
+                    is crucial. Our service provides an extensive database of drug-related information that healthcare
+                    professionals can rely on.</p>
+                <p>The database encompasses detailed drug profiles, including compositions and formulations, alongside
+                    usage guidelines and a thorough record of potential side effects, medication alerts, and risk
+                    minimization measures.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Detailed drug profiles with compositions and formulations</li>
+                    <li><i class="fas fa-check"></i> Usage guidelines and dosage recommendations</li>
+                    <li><i class="fas fa-check"></i> Comprehensive side effects documentation</li>
+                    <li><i class="fas fa-check"></i> Real-time medication alerts and safety updates</li>
+                    <li><i class="fas fa-check"></i> Risk minimization measures and protocols</li>
+                    <li><i class="fas fa-check"></i> Drug-drug interaction checking</li>
+                </ul>
+            </div>
+            <div class="service-visual">
+                <div class="service-icon-large">
+                    <i class="fas fa-database"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service 3: AI-Powered Data Extraction -->
+    <section class="service-detail" id="ai-extraction">
+        <div class="service-detail-content">
+            <div class="service-detail-text">
+                <h2><i class="fas fa-brain"></i> AI-Powered Data Extraction</h2>
+                <p>What sets our service apart is the use of advanced Large Language Models (LLMs) to meticulously
+                    extract and structure a wealth of existing unstructured data from various authoritative sources.</p>
+                <p>This approach not only enriches our database but also ensures that healthcare professionals are
+                    equipped with the most current and comprehensive drug information. The integration of this
+                    structured data into institutional systems streamlines medication management and supports informed
+                    decision-making.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Automated extraction from regulatory documents</li>
+                    <li><i class="fas fa-check"></i> Natural language processing of medical literature</li>
+                    <li><i class="fas fa-check"></i> Structured data output in industry-standard formats</li>
+                    <li><i class="fas fa-check"></i> Continuous learning and model improvement</li>
+                    <li><i class="fas fa-check"></i> Multi-language support for global documentation</li>
+                    <li><i class="fas fa-check"></i> Quality assurance and human-in-the-loop validation</li>
+                </ul>
+            </div>
+            <div class="service-visual">
+                <div class="service-icon-large">
+                    <i class="fas fa-brain"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service 4: Bibliographic Insight -->
+    <section class="service-detail" id="bibliographic-insight">
+        <div class="service-detail-content">
+            <div class="service-detail-text">
+                <h2><i class="fas fa-book-medical"></i> Bibliographic Insight Service</h2>
+                <p>Our Bibliographic Insight Service is a sophisticated tool that cross-references ADR incidents with an
+                    extensive bibliography on adverse drug reactions. This unique approach enables healthcare
+                    professionals to not only record and analyze ADRs but also understand them in the context of
+                    existing medical literature.</p>
+                <p>This fusion of practical data and research enriches our insights, guiding healthcare providers in
+                    making more informed decisions and refining their approaches to medication safety.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Cross-referencing with scientific publications</li>
+                    <li><i class="fas fa-check"></i> Case study matching and similarity analysis</li>
+                    <li><i class="fas fa-check"></i> Evidence-based clinical recommendations</li>
+                    <li><i class="fas fa-check"></i> Automated literature reviews and summaries</li>
+                    <li><i class="fas fa-check"></i> Citation management and reference tracking</li>
+                    <li><i class="fas fa-check"></i> Research trend identification and alerts</li>
+                </ul>
+            </div>
+            <div class="service-visual">
+                <div class="service-icon-large">
+                    <i class="fas fa-book-medical"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="section-header">
+            <h2>Why Choose Pharma Data Hub?</h2>
+            <p>Our comprehensive approach delivers tangible benefits for healthcare organizations</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <i class="fas fa-user-shield"></i>
+                <h3>Enhanced Patient Safety</h3>
+                <p>Reduce medication errors and adverse events through comprehensive drug information and real-time
+                    alerts.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-plug"></i>
+                <h3>Seamless Integration</h3>
+                <p>Our systems integrate with existing healthcare platforms using industry-standard protocols and APIs.
+                </p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-clock"></i>
+                <h3>Time Savings</h3>
+                <p>Automate data extraction and documentation tasks, freeing healthcare professionals to focus on
+                    patient care.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-balance-scale"></i>
+                <h3>Regulatory Compliance</h3>
+                <p>Stay compliant with pharmacovigilance regulations through automated reporting and audit trails.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Data-Driven Insights</h3>
+                <p>Make informed decisions with comprehensive analytics and evidence-based recommendations.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-hands-helping"></i>
+                <h3>Expert Support</h3>
+                <p>Our team of pharmaceutical and technology experts provides ongoing support and consultation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Transform Your Medication Management?</h2>
+        <p>Contact us today to learn how Pharma Data Hub can help your organization enhance patient safety and
+            streamline operations.</p>
+        <a href="mailto:geral@pharmadatahub.com" class="btn-primary">
+            <i class="fas fa-envelope"></i>
+            Contact Us
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="teste2.png" alt="Pharma Data Hub" style="height: 60px; margin-bottom: 1rem;">
+                <p>Empowering hospitals, pharmaceutical companies, and software companies with advanced tools to manage
+                    medication safely and effectively.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/company/pharmadatahub/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/PharmaDataHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#adr-registration">ADR Registration</a></li>
+                    <li><a href="#drug-information">Drug Information</a></li>
+                    <li><a href="#ai-extraction">AI Data Extraction</a></li>
+                    <li><a href="#bibliographic-insight">Bibliographic Insights</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">API Reference</a></li>
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Pharma Data Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.background = 'white';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.padding = '1rem';
+            navLinks.style.gap = '1rem';
+            navLinks.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
